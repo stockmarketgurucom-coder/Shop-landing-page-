@@ -1,0 +1,441 @@
+<!doctype html>
+
+<html lang="hi">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+
+  <title>Rajabhai.Shop — Premium Watch</title>
+
+  <meta name="theme-color" content="#000000" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+
+    :root{
+
+      --bg:#060606;
+
+      --muted:#9a9a9a;
+
+      --accent:#c79a40;
+
+      --accent-dark:#b38730;
+
+      --white:#f7f7f7;
+
+      --feature-bg:rgba(255,255,255,0.05);
+
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+
+      margin:0; padding:20px;
+
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+
+      background:linear-gradient(180deg,#020202,var(--bg));
+
+      color:var(--white);
+
+    }
+
+    .container{
+
+      max-width:420px;
+
+      margin:0 auto;
+
+      display:flex;
+
+      flex-direction:column;
+
+      gap:20px;
+
+      min-height:100vh;
+
+    }
+
+    /* Hero section */
+
+    .hero{
+
+      position:relative;
+
+      border-radius:20px;
+
+      overflow:hidden;
+
+      min-height:350px;
+
+      display:flex;
+
+      align-items:flex-end;
+
+      background-color:#000;
+
+      background-image:url("https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+
+      background-size:cover;
+
+      background-position:center;
+
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
+
+    }
+
+    .hero-overlay{
+
+      position:relative;
+
+      z-index:2;
+
+      padding:28px;
+
+      background:linear-gradient(180deg,rgba(0,0,0,0.65),rgba(0,0,0,0.85));
+
+      width:100%;
+
+      color:#ffffff;
+
+      text-align:left;
+
+    }
+
+    h1{
+
+      font-family:"Playfair Display", serif;
+
+      margin:0;
+
+      font-size:36px;
+
+      font-weight:700;
+
+      color:#fefefe;
+
+      letter-spacing:1px;
+
+      text-shadow:0 3px 10px rgba(0,0,0,0.85);
+
+      line-height:1.2;
+
+      opacity:0;
+
+      transform: translateY(20px);
+
+      animation: fadeSlideUp 1s ease-out 0.3s forwards;
+
+    }
+
+    p.lead{
+
+      margin:12px 0 18px;
+
+      font-family:"Inter", sans-serif;
+
+      color:#e5e5e5;
+
+      font-size:15px;
+
+      line-height:1.5;
+
+      opacity:0;
+
+      transform: translateY(20px);
+
+      animation: fadeSlideUp 1s ease-out 0.5s forwards;
+
+    }
+
+    /* Buttons */
+
+    .ctas{display:flex;gap:12px;flex-wrap:wrap;}
+
+    .ctas .btn{
+
+      padding:12px 18px;
+
+      border-radius:14px;
+
+      font-weight:700;
+
+      border:0;
+
+      cursor:pointer;
+
+      text-decoration:none;
+
+      transition: all 0.25s ease;
+
+      box-shadow:0 4px 12px rgba(0,0,0,0.3);
+
+      opacity:0;
+
+      transform: translateY(20px);
+
+    }
+
+    .ctas .btn:nth-child(1){animation: fadeSlideUp 1s ease-out 0.7s forwards;}
+
+    .ctas .btn:nth-child(2){animation: fadeSlideUp 1s ease-out 0.9s forwards;}
+
+    .btn-primary{
+
+      background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+
+      color:#080808;
+
+    }
+
+    .btn-primary:hover{
+
+      transform:translateY(-2px) scale(1.05);
+
+      box-shadow:0 6px 16px rgba(0,0,0,0.4);
+
+    }
+
+    .btn-outline{
+
+      background:transparent;
+
+      border:1px solid rgba(255,255,255,0.2);
+
+      color:var(--white);
+
+    }
+
+    .btn-outline:hover{
+
+      background:rgba(255,255,255,0.1);
+
+      transform:translateY(-2px) scale(1.05);
+
+    }
+
+    /* Features with fade-in animation */
+
+    .features{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
+
+    .feature{
+
+      background:var(--feature-bg);
+
+      padding:14px;
+
+      border-radius:14px;
+
+      display:flex;
+
+      gap:14px;
+
+      align-items:flex-start;
+
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+
+      transition: all 0.4s ease, transform 0.4s ease;
+
+      opacity:0;
+
+      transform: translateY(20px);
+
+    }
+
+    .feature.visible{
+
+      opacity:1;
+
+      transform: translateY(0);
+
+    }
+
+    .feature .num{
+
+      width:40px;
+
+      height:40px;
+
+      background:rgba(255,255,255,0.12);
+
+      border-radius:10px;
+
+      display:grid;
+
+      place-items:center;
+
+      font-weight:700;
+
+      font-family:"Inter", sans-serif;
+
+    }
+
+    .feature strong{
+
+      font-family:"Playfair Display", serif;
+
+    }
+
+    footer{
+
+      margin-top:auto;
+
+      text-align:center;
+
+      color:var(--muted);
+
+      font-size:13px;
+
+      padding-top:22px;
+
+      border-top:1px solid rgba(255,255,255,0.1);
+
+    }
+
+    footer a{
+
+      color:var(--white);
+
+      text-decoration:underline;
+
+    }
+
+    /* Hero fade-slide keyframes */
+
+    @keyframes fadeSlideUp {
+
+      from {opacity:0; transform:translateY(20px);}
+
+      to {opacity:1; transform:translateY(0);}
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header style="display:flex;justify-content:space-between;align-items:center">
+
+      <div style="font-family:Playfair Display,serif;font-size:22px">Rajabhai.Shop</div>
+
+      <nav><a href="#shop" style="color:var(--white);text-decoration:none;font-weight:600">Shop</a></nav>
+
+    </header>
+
+    <section class="hero">
+
+      <div class="hero-overlay">
+
+        <h1>Premium Watch Collection</h1>
+
+        <p class="lead">Curated luxury timepieces — timeless design, genuine provenance.</p>
+
+        <div class="ctas">
+
+          <a class="btn btn-primary" href="#shop">Shop Now</a>
+
+          <a class="btn btn-outline" href="mailto:hello@rajabhai.shop?subject=Enquiry">Enquire</a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="features" id="shop">
+
+      <div class="feature">
+
+        <div class="num">1</div>
+
+        <div>
+
+          <strong>Authentic Luxury</strong>
+
+          <div style="color:var(--muted);font-size:13px;margin-top:4px">Verified originals with warranty & certificates.</div>
+
+        </div>
+
+      </div>
+
+      <div class="feature">
+
+        <div class="num">2</div>
+
+        <div>
+
+          <strong>Free Insured Shipping</strong>
+
+          <div style="color:var(--muted);font-size:13px;margin-top:4px">Doorstep delivery with transit insurance.</div>
+
+        </div>
+
+      </div>
+
+      <div class="feature">
+
+        <div class="num">3</div>
+
+        <div>
+
+          <strong>Easy Returns</strong>
+
+          <div style="color:var(--muted);font-size:13px;margin-top:4px">7-day returns for eligible purchases.</div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <footer>
+
+      © Rajabhai.Shop — 
+
+      <a href="https://www.pexels.com/photo/close-up-of-wristwatch-190819/" target="_blank" rel="noopener noreferrer"></a>
+
+    </footer>
+
+  </div>
+
+  <script>
+
+    // Scroll fade-in for features
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+      const features = document.querySelectorAll('.feature');
+
+      const observer = new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+          if(entry.isIntersecting){
+
+            entry.target.classList.add('visible');
+
+          }
+
+        });
+
+      }, {threshold:0.2});
+
+      features.forEach(f => observer.observe(f));
+
+    });
+
+  </script>
+
+</body>
+
+</html>
